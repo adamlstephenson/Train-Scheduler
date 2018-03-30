@@ -15,11 +15,24 @@
   var destination;
   var firstTrainTime;
   var frequency;
+  var newTrain;
 
-  $(".submit").on("click", function() {
+  $(".submit").on("click", function(event) {
+    event.preventDefault();
     trainName = $("#trainname").val().trim();
     destination = $("#destination").val().trim();
     firstTrainTime = $("#traintime").val().trim();
     frequency = $("#frequency").val().trim();
+    console.log(trainName)
+
+    newTrain = {
+      name: trainName,
+      destination: destination,
+      time: firstTrainTime,
+      frequency: frequency
+    }
+
+    console.log(newTrain)
+
 
   })
