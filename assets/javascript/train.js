@@ -8,3 +8,18 @@
     messagingSenderId: "22589334577"
   };
   firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  var trainName;
+  var destination;
+  var firstTrainTime;
+  var frequency;
+
+  $(".submit").on("click", function() {
+    trainName = $("#trainname").val().trim();
+    destination = $("#destination").val().trim();
+    firstTrainTime = $("#traintime").val().trim();
+    frequency = $("#frequency").val().trim();
+
+  })
