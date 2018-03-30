@@ -31,8 +31,8 @@
       time: firstTrainTime,
       frequency: frequency
     }
-
     console.log(newTrain)
 
+    database.ref().push(newTrain);
 
   })
