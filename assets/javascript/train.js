@@ -36,3 +36,22 @@
     database.ref().push(newTrain);
 
   })
+
+  database.ref().on("child_added", function(snapshot) {
+
+    console.log(snapshot.val())
+    trainName = snapshot.val().name;
+    destination = snapshot.val().destination;
+    firstTrainTime = snapshot.val().time;
+    frequency = snapshot.val().frequency;
+    
+    console.log(trainName)
+    console.log(destination)
+    console.log(firstTrainTime)
+    console.log(frequency)
+
+    $(".table>tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>")
+
+  })
+
+
