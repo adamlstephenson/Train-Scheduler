@@ -30,7 +30,7 @@
     }
     console.log(newTrain)
 
-   // database.ref().push(newTrain);
+   database.ref().push(newTrain);
 
   })
 
@@ -41,12 +41,18 @@
     firstTrainTime = snapshot.val().time;
     frequency = snapshot.val().frequency;
     
-    console.log(trainName)
-    console.log(destination)
-    console.log(firstTrainTime)
-    console.log(frequency)
+    var convertedDate = moment(firstTrainTime, "hh:mm").subtract(1, "years");
+    var newTrainTime = moment(convertedDate).format("HH:mm");
+    var current = moment();
+    var conversionTwo = moment(newTrainTime, "hh:mm").subtract(1, "years");
+    var diffTime = moment().diff(moment(conversionTwo), "minutes");
+    var remainder = diffTime % frequency;
+    var minutesAway = frequency - remainder;
+    var nextArrival = moment().add(minutesAway, "minutes").format("h:mm a");
 
-   $(".table>tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td></tr>")
+
+
+   $(".table>tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td></td>" + nextArrival + "</td><td>" + minutesAway + "</td></tr>");
 
   })
 
