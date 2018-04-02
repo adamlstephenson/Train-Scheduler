@@ -57,4 +57,9 @@
 
   })
 
+  //Erik's reload function
+  setInterval(function(){
+    location.reload();
+  }, 6000)
+
 
