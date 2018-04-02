@@ -11,19 +11,16 @@
 
   var database = firebase.database();
 
-  var trainName;
-  var destination;
-  var firstTrainTime;
-  var frequency;
-  var newTrain;
-
   $(".submit").on("click", function(event) {
-    event.preventDefault();
-    trainName = $("#trainname").val().trim();
-    destination = $("#destination").val().trim();
-    firstTrainTime = $("#traintime").val().trim();
-    frequency = $("#frequency").val().trim();
+   event.preventDefault();
+    var trainName = $("#trainname").val().trim();
+    var destination = $("#trainDestination").val().trim();
+    var firstTrainTime = $("#traintime").val().trim();
+    var frequency = $("#trainFrequency").val().trim();
     console.log(trainName)
+    console.log(destination)
+    console.log(firstTrainTime)
+    console.log(frequency)
 
     newTrain = {
       name: trainName,
@@ -33,13 +30,12 @@
     }
     console.log(newTrain)
 
-    database.ref().push(newTrain);
+   // database.ref().push(newTrain);
 
   })
 
-  database.ref().on("child_added", function(snapshot) {
+  database.ref().on("child_added", function(snapshot, prevKey) {
 
-    console.log(snapshot.val())
     trainName = snapshot.val().name;
     destination = snapshot.val().destination;
     firstTrainTime = snapshot.val().time;
@@ -50,7 +46,7 @@
     console.log(firstTrainTime)
     console.log(frequency)
 
-    $(".table>tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>")
+   $(".table>tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td></tr>")
 
   })
 
