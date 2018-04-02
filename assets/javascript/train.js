@@ -49,10 +49,11 @@
     var remainder = diffTime % frequency;
     var minutesAway = frequency - remainder;
     var nextArrival = moment().add(minutesAway, "minutes").format("h:mm a");
+    console.log(nextArrival)
 
 
 
-   $(".table>tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td></td>" + nextArrival + "</td><td>" + minutesAway + "</td></tr>");
+   $(".table>tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td></tr>");
 
   })
 
